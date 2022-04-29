@@ -1,6 +1,3 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname listaCap3-AndreiPochmannKoenich-B) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;;----------------------------------------------------------------------------------------------------EXERCÍCIO 01--------------------------------------------------------------------------------------------------------------
 
 ;; calcula_hipotenusa : Número Número -> Número
@@ -18,11 +15,6 @@
 (check-expect (calcula_hipotenusa 3 4) 5)
 (check-expect (calcula_hipotenusa 6 8) 10)
 (check-expect (calcula_hipotenusa 12 16) 20)
-
-
-
-
-
 
 ;;----------------------------------------------------------------------------------------------------EXERCÍCIO 02--------------------------------------------------------------------------------------------------------------
 
@@ -215,17 +207,3 @@
 (check-expect (tempo-transcorrido 30 8) 22)
 (check-expect (tempo-transcorrido 40 14) 26)
 (check-expect (tempo-transcorrido 72 38) 34)
-
-
-
-  
-
-
-
-
-
-
-
-
-
-

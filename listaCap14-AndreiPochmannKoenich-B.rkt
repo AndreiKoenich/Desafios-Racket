@@ -403,21 +403,3 @@
 (check-expect (testa-vértice dez) #true)
 (check-expect (testa-vértice dezenove) #true)
 (check-expect (testa-vértice quatorze) #true)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   

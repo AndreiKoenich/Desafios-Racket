@@ -1,6 +1,3 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-advanced-reader.ss" "lang")((modname listaCap28-AndreiPochmannKoenich-B) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp") (lib "universe.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #t #t none #f ((lib "image.rkt" "teachpack" "2htdp") (lib "universe.rkt" "teachpack" "2htdp")) #f)))
 ;; LISTA DE STRING ====================================================================================================================================================================================================================================================================================
 
 ;; Um elemento listadestring do conjunto ListaDeString pode ser
@@ -673,9 +670,3 @@
 (check-expect (mostra-uma-lista lista-strings-1) "Morphy -> Steinitz -> Zukertort -> Eichborn -> Anderssen ") 
 (check-expect (mostra-uma-lista lista-strings-2) "Karpov -> Alekhine -> Botvinnik -> Mecking -> Korchnoi ")
 (check-expect (mostra-uma-lista lista-strings-3) "Carlsen -> Kasparov -> Kamsky -> Caruana -> Giri ")
-
-  
-  
-  
-
-

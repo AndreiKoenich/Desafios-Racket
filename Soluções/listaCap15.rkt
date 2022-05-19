@@ -1,402 +1,355 @@
+;; -----------------------------------
+;; TIPO LISTA-CONTEUDO:
+;; -----------------------------------
+;; Uma Lista-conteudo é
+
+;; 1. empty (vazia), ou
+
+;; 2. (cons p lc), onde
+
+;; p : String
+;; lc : Lista-conteúdo, ou
+
+;; 3. (cons i lc), onde
+
+;; i : Imagem
+;; lc : Lista-conteúdo, ou
+
+;; 4. (cons p lc), onde
+
+;; p : Pag-web
+;; lc : Lista-conteúdo.
+
+;; ----------------------
+;; TIPO PAG-WEB
+;; ----------------------
+
+(define-struct pag-web (nome conteudo))
+
+;; Um elemento do conjunto Pag-web é uma estrutura
+;; (make-pag-web um-nome um-cont) onde
+
+;; um-nome: String, é o nome da página e
+
+;; um-cont: Lista-conteudo, é uma lista de conteúdo de páginas-web.
+
 ;;----------------------------------------------------------------------------------------------------EXERCÍCIO 01---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-; Um elemento do conjunto Data é um elemento do cjto. NumerosInteiros
+;; CONSTANTES PARA IMAGENS ===========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 
-;; d1<=d2? : Data Data -> Boolean
+;; circulo-vermelho: constante utilizada para desenhar um círculo vermelho
+(define circulo-vermelho (circle 38.5 "solid" "red")) 
 
-;; dadas 2 datas (apenas o ano), verifica se a primeira é menor ou igual a segunda
+;; quadrado-laranja: constante utilizada para desenhar um quadrado laranja
+(define quadrado-laranja (rectangle 77 77 "solid" "orange"))
 
-;; Exemplos:
-;: (d1<=d2? 2014 2014) = true
-;; (d1<=d2? 2014 2013) = false
+;; circulo-azul: constante utilizada para desenhar um círculo azul
+(define circulo-azul (circle 38.5 "solid" "blue"))
 
-(define (d1<=d2? d1 d2)
-  (<= d1 d2))
+;; estrela-amarela: constante utilizada para desenhar uma estrela amarela
+(define estrela-amarela (star 50 "solid" "yellow"))
 
-;; Testes:
-(check-expect (d1<=d2? 2014 2014) true)
-(check-expect (d1<=d2? 2014 2013) false)
+;; elipse-azul: constante utilizada para desenhar uma elipse azul
+(define elipse-azul (rotate -35 (ellipse 55 80 "solid" "blue")))
+
+;; circulo-verde: constante utilizada para desenhar um círculo verde
+(define circulo-verde (circle 38.5 "solid" "lime"))
+
+;; quadrado-amarelo: constante utilizada para desenhar um quadrado amarelo
+(define quadrado-amarelo (rectangle 77 77 "solid" "yellow"))
+
+;; circulo-preto: constante utilizada para desenhar um círculo preto
+(define circulo-preto (circle 38.5 "solid" "black"))
+
+;; estrela-turquesa: constante utilizada para desenhar uma estrela turquesa
+(define estrela-turquesa (star 50 "solid" "turquoise"))
+
+;; elipse-vermelha: constante utilizada para desenhar uma elipse vermelha
+(define elipse-vermelha (rotate -35 (ellipse 55 80 "solid" "red")))
+
+;; retangulo-preto-menorque: constante utilizada para desenhar o sinal < dentro de um retangulo preto
+(define retangulo-preto-menorque (overlay (text "<" 60 "white")(rectangle 45 78 "solid" "black")))
+
+;; retangulo-preto-maiorque: constante utilizada para desenhar o sinal > dentro de um retangulo preto
+(define retangulo-preto-maiorque (overlay (text ">" 60 "white")(rectangle 45 78 "solid" "black")))
+
+;; elipse-verde: constante utilizada para desenhar uma elipse verde
+(define elipse-verde(rotate -35 (ellipse 55 80 "solid" "lime")))
+
+;; circulo-turquesa: constante utilizada para desenhar um círculo turquesa
+(define circulo-turquesa (circle 38.5 "solid" "turquoise"))
+
+;; quadrado-marrom: constante utilizada para desenhar um quadrado marrom
+(define quadrado-marrom (rectangle 77 77 "solid" "brown"))
+
+;; elipse-preta: constante utilizada para desenhar uma elipse preta
+(define elipse-preta (rotate -35 (ellipse 55 80 "solid" "black")))
+
+;; estrela-vermelha: constante utilizada para desenhar uma estrela vermelha
+(define estrela-vermelha (star 50 "solid" "red"))
+
+;; circulo-laranja: constante utilizada para desenhar um círculo azul
+(define circulo-laranja (circle 38.5 "solid" "orange"))
+
+;; circulo-verde: constante utilizada para desenhar um círculo azul
+(define circulo-marrom (circle 38.5 "solid" "brown"))
+
+;; ===========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+
+;; Exemplos de elementos do conjunto Lista-conteudo:
+(define conteudos-vazia empty)
+(define conteudos1 (cons "Engineering" (cons estrela-amarela (cons "Translation" (cons quadrado-laranja (cons "Math" empty))))))
+(define conteudos2 (cons "Science" (cons circulo-vermelho (cons "Exercises" (cons elipse-azul (cons "Chemistry" empty))))))
+(define conteudos3 (cons "Chess" (cons estrela-turquesa (cons "PaulMorphy" (cons circulo-verde(cons "Zwischenzug" empty))))))
+
+;; Exemplos de elementos do conjunto Pag-web:
+(define pagweb0 (make-pag-web "ZeroClub" conteudos-vazia))
+(define pagweb1 (make-pag-web "EngineeringClub" conteudos1))
+(define pagweb2 (make-pag-web "ScienceClub" conteudos2))
+(define pagweb3 (make-pag-web "ChessClub" conteudos3))
+
+;; Exemplos de elementos do conjunto Lista-conteudo:
+(define conteudos4 (cons "EngineeringScience" (cons elipse-vermelha (cons pagweb1 (cons pagweb2 (cons circulo-preto empty))))))
+(define conteudos5 (cons "ScienceChess" (cons quadrado-amarelo (cons pagweb0 (cons circulo-vermelho empty)))))
+
+;; Exemplos de elementos do conjunto Pag-web:
+(define pagweb4 (make-pag-web "Knowledge" conteudos4))
+(define pagweb5 (make-pag-web "Games" conteudos5))
+
+;; Outros exemplos de elementos dos conjuntos Pag-web e Lista-conteudo:
+(define conteudos12 (cons elipse-verde (cons "Green" (cons "Verde" empty))))
+(define pagweb12 (make-pag-web "Twelve" conteudos12))
+(define conteudos11 (cons pagweb12 (cons "Turquoise" (cons "Turquesa" (cons circulo-turquesa empty)))))
+(define pagweb11 (make-pag-web "Eleven" conteudos11))
+(define conteudos10 (cons quadrado-marrom (cons "Brown" (cons "Marrom" empty))))
+(define pagweb10 (make-pag-web "Ten" conteudos10))
+(define conteudos7 (cons elipse-preta (cons "Black" (cons "Preto" empty))))
+(define pagweb7 (make-pag-web "Seven" conteudos7))
+(define conteudos9 (cons pagweb11 (cons estrela-vermelha (cons "Star" (cons "Estrela" (cons pagweb10 empty))))))
+(define pagweb9 (make-pag-web "Nine" conteudos9))
+(define conteudos8 (cons circulo-laranja (cons pagweb9 empty)))
+(define pagweb8 (make-pag-web "Eight" conteudos8))
+(define conteudos6 (cons pagweb7 (cons circulo-verde (cons pagweb8 empty))))
+(define pagweb6 (make-pag-web "Six" conteudos6))
 
 ;;----------------------------------------------------------------------------------------------------EXERCÍCIO 02---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-(define-struct filho (pai mãe nome data olhos))
+;; LISTA-PALAVRAS ====================================================================================================================================================================================================================================================================================
 
-; Um elemento nó de um conjunto Nó (de uma árvore genealógica) é:
+;; lista-palavras: Pag-web -> Lista-conteudo
 
-; 1. empty, representando a falta de informação, ou
+;; Objetivo: dada uma página da web, esta função devolve a lista de palavras
+;; que a página contém, sem considerar suas sub-páginas. Caso a página em
+;; questão não possua nenhuma palavra, a função retorna uma lista vazia.
 
-; 2. (make-filho p m n d o), em que:
+;; Exemplos: (lista-palavras pagweb0) = empty
+;;           (lista-palavras pagweb1) = (cons "Engineering" (cons "Translation" (cons "Math" empty)))
+;;           (lista-palavras pagweb2) = (cons "Science" (cons "Exercises" (cons "Chemistry" empty)))
+;;           (lista-palavras pagweb3) = (cons "Chess" (cons "PaulMorphy" (cons "Zwischenzug" empty)))
+;;           (lista-palavras pagweb4) = (cons "EngineeringAndScience" empty)
+;;           (lista-palavras pagweb5) = (cons "ScienceAndChess" empty)
 
-; p: Nó, representa o pai da pessoa
-
-; m: Nó, representa a mãe da pessoa
-
-; n: Símbolo, representa o nome da pessoa
-
-; d: Data, representa o ano de nascimento da pessoa
-
-; o: Símbolo, representa a cor dos olhos da pessoa, em inglês
-
-(define Althea (make-filho empty empty 'Althea 1915 'brown))
-(define Jack (make-filho empty empty 'Jack 1948 'brown))
-(define Judy (make-filho empty Althea 'Judy 1945 'green))
-(define Monica (make-filho Jack Judy 'Monica 1968 'blue))
-(define Ross (make-filho Jack Judy 'Ross 1966 'brown))
-(define Sandra (make-filho empty empty 'Sandra 1947 'brown))
-(define Leonard (make-filho empty empty 'Leonard 1947 'brown))
-(define Rachel (make-filho Leonard Sandra 'Rachel 1969 'blue))
-(define Nora (make-filho empty empty 'Nora 1948 'blue))
-(define Charles (make-filho empty empty 'Charles 1948 'blue))
-(define Chandler (make-filho Charles Nora 'Chandler 1966 'blue))
-(define GloriaTribbiani (make-filho empty empty 'GloriaTribbiani 1950 'brown))
-(define MrTribbiani (make-filho empty empty 'MrTribbiani 1949 'brown))
-(define Joey (make-filho MrTribbiani GloriaTribbiani 'Joey 1969 'brown))
-(define Frank (make-filho empty empty 'Frank 1940 'brown))
-(define LilyBuffay (make-filho empty empty 'LilyBuffay 1940 'blue))
-(define Phoebe (make-filho Frank LilyBuffay 'Phoebe 1965 'blue))
-(define Carol (make-filho empty empty 'Carol 1965 'blue))
-(define Ben (make-filho Ross Carol 'Ben 1994 'blue))
-(define Emma (make-filho Ross Rachel 'Emma 2002 'blue))
-
-;;----------------------------------------------------------------------------------------------------EXERCÍCIO 03-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-;; lista de datas ====================================================================================================================================================================================================================================================================================
-
-;; Um elemento lista-de-datas do conjunto Lista-de-datas é
-
-;; 1. A lista vazia empty
-
-;; ou
-
-;; 2. (cons d ldd), em que
-
-;; d: Data e
-
-;; ldc: Lista-de-datas
-
-;; Exemplos de elementos do conjunto Lista-de-datas:
-(define lista-de-datas-vazia empty)
-(define lista-de-datas-1 (cons 1789(cons 1462(cons 1337(cons 1962 empty)))))
-(define lista-de-datas-2 (cons 1548(cons 1512(cons 1318(cons 1627 empty)))))
-(define lista-de-datas-3 (cons 1920(cons 1937(cons 1948(cons 1963 empty)))))
-(define lista-de-datas-4 (cons 2014(cons 2006(cons 2006(cons 2020 empty)))))
-
-;; lista de nós ====================================================================================================================================================================================================================================================================================
-
-;; Um elemento lista-de-nós do conjunto Lista-de-nós é
-
-;; 1. A lista vazia empty
-
-;; ou
-
-;; 2. (cons n ldn), em que
-
-;; n: Nó e
-
-;; ldn: Lista-de-nós
-
-;; Exemplos de elementos do conjunto Lista-de-nós:
-(define lista-de-nós-vazia empty)
-(define lista-de-nós-1 (cons Althea empty))
-(define lista-de-nós-2 (cons Judy (cons Althea empty)))
-(define lista-de-nós-3 (cons Ross (cons Judy (cons Althea (cons Jack empty)))))
-
-;; MAISIDOSO ====================================================================================================================================================================================================================================================================================
-
-;; maisIdoso: Nó -> Nó
-
-;; Objetivo: esta função recebe um nó de uma árvore genealógica e retorna o ancestral mais idoso do nó fornecido
-;; (que pode ser o próprio nó). Se houver mais de um com mesma data de nascimento, a função retorna um deles.
-
-;; Exemplos: (maisIdoso empty) = empty
-;;           (maisIdoso Joey) = MrTribbiani
-;;           (maisIdoso Emma) = Althea
-;;           (maisIdoso Rachel) = Rachel
-;;           (maisIdoso Althea) = Althea
-
-(define (maisIdoso node)
-  (analisa-lista-ancestrais (cria-lista-ancestrais node) (analisa-lista-datas (cria-lista-datas node))))  
+(define (lista-palavras page)
+  (analisa-lista-conteudo (pag-web-conteudo page)))
 
 ;; Testes:
-(check-expect (maisIdoso empty) empty)
-(check-expect (maisIdoso Joey) MrTribbiani)
-(check-expect (maisIdoso Emma) Althea)
-(check-expect (maisIdoso Rachel) Sandra)
-(check-expect (maisIdoso Althea) Althea)
+(check-expect (lista-palavras pagweb0) empty)
+(check-expect (lista-palavras pagweb1) (cons "Engineering" (cons "Translation" (cons "Math" empty))))
+(check-expect (lista-palavras pagweb2) (cons "Science" (cons "Exercises" (cons "Chemistry" empty))))
+(check-expect (lista-palavras pagweb3) (cons "Chess" (cons "PaulMorphy" (cons "Zwischenzug" empty))))
+(check-expect (lista-palavras pagweb4) (cons "EngineeringScience" empty))
+(check-expect (lista-palavras pagweb5) (cons "ScienceChess" empty))
 
-;; CRIA-LISTA-ANCESTRAIS ====================================================================================================================================================================================================================================================================================
-  
-;; cria-lista-ancestrais: Nó -> Lista-de-nós
+;; ANALISA-LISTA-CONTEUDO ====================================================================================================================================================================================================================================================================================
 
-;; Objetivo: esta função auxiliar recebe um nó de uma árvore genealógica e retorna uma lista contendo
-;; todos os ancestrais desse nó, incluindo o próprio nó. Caso a função receba um nó empty, a função
-;; retorna uma lista vazia.
+;; analisa-lista-conteudo: Lista-conteudo -> Lista-conteudo
 
-;; Exemplos: (cria-lista-ancestrais empty) = empty
-;;           (cria-lista-ancestrais Althea) = (cons Althea empty)
-;;           (cria-lista-ancestrais Judy) = (cons Judy (cons Althea empty)))
-;;           (cria-lista-ancestrais Ross) = (cons Ross (cons Judy (cons Althea (cons Jack empty)))))
+;; Objetivo: esta função auxiliar recebe uma lista de conteúdos, retornando
+;; uma lista contendo somente as strings da lista fornecida. Caso a função
+;; receba uma lista vazia, ela retorna uma lista vazia.
 
-(define (cria-lista-ancestrais node)
-  [cond
-    [(empty? node) empty]
-    [else
-     (cons node(append (cria-lista-ancestrais (filho-mãe node))(cria-lista-ancestrais (filho-pai node))))]])
-  
-;; Testes:
-(check-expect (cria-lista-ancestrais empty) empty)
-(check-expect (cria-lista-ancestrais Althea) (cons Althea empty))
-(check-expect (cria-lista-ancestrais Judy) (cons Judy (cons Althea empty)))
-(check-expect (cria-lista-ancestrais Ross) (cons Ross (cons Judy (cons Althea (cons Jack empty)))))
+;; Exemplos: (analisa-lista-conteudo conteudos-vazia) = empty
+;;           (analisa-lista-conteudo conteudos1) = (cons "Engineering" (cons "Translation" (cons "Math" empty)))
+;;           (analisa-lista-conteudo conteudos2) = (cons "Science" (cons "Exercises" (cons "Chemistry" empty)))
+;;           (analisa-lista-conteudo conteudos3) = (cons "Chess" (cons "PaulMorphy" (cons "Zwischenzug" empty)))
+;;           (analisa-lista-conteudo conteudos4) = (cons "EngineeringAndScience" empty)
+;;           (analisa-lista-conteudo conteudos5) = (cons "ScienceAndChess" empty)
 
-;; ANALISA-LISTA-ANCESTRAIS ====================================================================================================================================================================================================================================================================================
 
-;; analisa-lista-ancestrais : Lista-de-nós Número -> Nó
-
-;; Objetivo: esta função auxiliar recebe uma lista de nós de uma árvore genealógica e um número, e
-;; retorna um nó de uma árvore genealógica cuja data de nascimento seja igual ao número informado.
-;; Caso nenhum nó cumpra esse requisito, a função retorna o nó empty. Caso dois nós da árvore
-;; genealógica cumpram o requisito, a função retorna qualquer um deles.
-
-;; Exemplos: (analisa-lista-ancestrais lista-de-nós-vazia 77) = empty
-;;           (analisa-lista-ancestrais lista-de-nós-1 1915) = Althea
-;;           (analisa-lista-ancestrais lista-de-nós-2 1337) = empty
-;;           (analisa-lista-ancestrais lista-de-nós-3 1945) = Judy
-
-(define (analisa-lista-ancestrais list number)
+(define (analisa-lista-conteudo list)
   [cond
     [(empty? list) empty]
-    [(= number (filho-data (first list))) (first list)]
-    [else (analisa-lista-ancestrais (rest list) number)]])
+    [(string? (first list)) (cons (first list) (analisa-lista-conteudo (rest list)))] 
+    [else (analisa-lista-conteudo (rest list))]])
 
 ;; Testes:
-(check-expect (analisa-lista-ancestrais lista-de-nós-vazia 77) empty)
-(check-expect (analisa-lista-ancestrais lista-de-nós-1 1915) Althea)
-(check-expect (analisa-lista-ancestrais lista-de-nós-2 1337) empty)
-(check-expect (analisa-lista-ancestrais lista-de-nós-3 1945) Judy)
+(check-expect (analisa-lista-conteudo conteudos-vazia) empty)
+(check-expect (analisa-lista-conteudo conteudos1) (cons "Engineering" (cons "Translation" (cons "Math" empty))))
+(check-expect (analisa-lista-conteudo conteudos2) (cons "Science" (cons "Exercises" (cons "Chemistry" empty))))
+(check-expect (analisa-lista-conteudo conteudos3) (cons "Chess" (cons "PaulMorphy" (cons "Zwischenzug" empty))))
+(check-expect (analisa-lista-conteudo conteudos4) (cons "EngineeringScience" empty)) 
+(check-expect (analisa-lista-conteudo conteudos5) (cons "ScienceChess" empty)) 
 
-;; CRIA-LISTA-DATAS ====================================================================================================================================================================================================================================================================================
-  
-;; cria-lista-datas: Nó -> Lista-de-datas
+;;----------------------------------------------------------------------------------------------------EXERCÍCIO 03---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-;; Objetivo: esta função auxiliar recebe um nó de uma árvore genealógica e retorna uma lista contendo as
-;; datas de nascimentos de todos os ancestrais desse nó, incluindo a data de nascimento do próprio nó
-;; fornecido. Caso a função receba o nó empty, a função retorna uma lista vazia.
+;; MOSTRA-IMAGENS ====================================================================================================================================================================================================================================================================================
 
-;; Exemplos: (cria-lista-datas empty) = empty
-;;           (cria-lista-datas Althea) = (cons 1915 empty)
-;;           (cria-lista-datas Joey) = (cons 1969 (cons 1950 (cons 1949 empty)))
-;;           (cria-lista-datas Emma) = (cons 2002 (cons 1969 (cons 1947 (cons 1947 (cons 1966 (cons 1945 (cons 1915 (cons 1948 empty))))))))
+;; mostra-imagens: Pag-web -> Imagem
 
-(define (cria-lista-datas node)
+;; Objetivo: esta função recebe uma página web, e retorna uma imagem contendo as imagens contidas
+;; na página e em suas sub-páginas, lado a lado. Acima de cada imagem, será impresso o nome da
+;; página em que a imagem aparece, usando fonte de tamanho 15 e cor preta. Caso a página não possua
+;; imagens, a função retorna uma imagem vazia.
+
+;; Exemplos: (mostra-imagens pagweb0) = empty-image
+;;           (mostra-imagens pagweb3) = .
+;;           (mostra-imagens pagweb4) = .
+;;           (mostra-imagens pagweb5) = .
+
+(define (mostra-imagens page)
+  (analisa-lista-imagens page (pag-web-conteudo page)))
+
+;; Testes:
+;;(check-expect (mostra-imagens pagweb0) empty-image)
+;;(check-expect (mostra-imagens pagweb3) .)
+;;(check-expect (mostra-imagens pagweb4) .)
+;;(check-expect (mostra-imagens pagweb5) .) 
+
+;; ANALISA-LISTA-IMAGENS ====================================================================================================================================================================================================================================================================================
+
+;; analisa-lista-imagens: Pag-web Lista-conteudo -> Imagem
+
+;; Objetivo: esta função auxiliar recebe uma página da web e uma lista de conteúdos, retornando uma
+;; imagem contendo todas as imagens da lista e das sub-páginas existentes na lista. Acima da imagem,
+;; será impresso um texto informando o nome da página da web que contém a respectiva imagem, usando fonte
+;; tamanho 15 e cor preta. Caso a lista recebida não possua imagens, a função retorna uma imagem vazia.
+
+;; Exemplos: (analisa-lista-imagens conteudos-vazia) = empty-image
+;;           (analisa-lista-imagens pagweb1 conteudos1) = .
+
+;;           (analisa-lista-imagens pagweb2 conteudos2) = .
+;;           (analisa-lista-imagens pagweb4 conteudos5) = .
+
+(define (analisa-lista-imagens page list)
   [cond
-    [(empty? node) empty]
-    [else
-     (cons (filho-data node)(append (cria-lista-datas (filho-mãe node))(cria-lista-datas (filho-pai node))))]])
-  
-;; Testes:
-(check-expect (cria-lista-datas empty) empty)
-(check-expect (cria-lista-datas Althea) (cons 1915 empty))
-(check-expect (cria-lista-datas Joey) (cons 1969 (cons 1950 (cons 1949 empty))))
-(check-expect (cria-lista-datas Emma) (cons 2002 (cons 1969 (cons 1947 (cons 1947 (cons 1966 (cons 1945 (cons 1915 (cons 1948 empty)))))))))
-
-;; ANALISA-LISTA-DATAS ====================================================================================================================================================================================================================================================================================
-
-;; analisa-lista-datas: Lista-de-datas -> Número
-
-;; Objetivo: esta função auxiliar recebe uma lista de datas e retorna
-;; a menor data dessa lista. Caso a lista seja uma lista vazia, a
-;; função retorna o valor zero. Caso duas ou mais datas da lista
-;; possuam simultaneamente o menor valor, a função retorna esse
-;; menor valor que corresponde às datas.
-
-;; Exemplos: (analisa-lista-datas lista-de-datas-vazia) = 0
-;;           (analisa-lista-datas lista-de-datas-1) = 1337
-;;           (analisa-lista-datas lista-de-datas-2) = 1318
-;;           (analisa-lista-datas lista-de-datas-3) = 1920
-;;           (analisa-lista-datas lista-de-datas-4) = 2006
-
-(define (analisa-lista-datas list)
-  [cond
-    [(empty? list) 0]
-    [else (analisa-datas-recursao list (first list))]])  
-
-;; Testes:
-(check-expect (analisa-lista-datas lista-de-datas-vazia) 0)
-(check-expect (analisa-lista-datas lista-de-datas-1) 1337)
-(check-expect (analisa-lista-datas lista-de-datas-2) 1318)
-(check-expect (analisa-lista-datas lista-de-datas-3) 1920)
-(check-expect (analisa-lista-datas lista-de-datas-4) 2006)
-
-;; ANALISA-DATAS-RECURSAO ====================================================================================================================================================================================================================================================================================================================================================================================
-
-;; analisa-datas-recursao: Lista-de-datas Número -> Número
-
-;; Objetivo: esta função auxiliar recebe uma lista de datas e um número,
-;; e, considerando apenas os valores de datas da lista que são menores
-;; ou iguais ao valor fornecido, retorna o menor dentre esses valores.
-;; Caso nenhuma data da lista cumpra esse requisito, a função retorna
-;; o próprio número que foi inserido como operando pelo usuário. Caso
-;; duas datas da lista cumpram simultaneamente esse requisito, a função
-;; retorna simplesmente o valor de uma dessas duas datas.
-
-;; Exemplos: (analisa-datas-recursao lista-de-datas-vazia 77) = 77
-;;           (analisa-datas-recursao lista-de-datas-1 1789) = 1337
-;;           (analisa-datas-recursao lista-de-datas-2 1520) = 1318
-;;           (analisa-datas-recursao lista-de-datas-3 1920) = 1920
-;;           (analisa-datas-recursao lista-de-datas-4 2007) = 2006
-
-(define (analisa-datas-recursao list number)
-  [cond
-    [(empty? list) number]
-    [(d1<=d2? (first list) number)(analisa-datas-recursao (rest list) (first list))] 
-    [else (analisa-datas-recursao (rest list) number)]])
-
-;; Testes:
-(check-expect (analisa-datas-recursao lista-de-datas-vazia 77) 77)
-(check-expect (analisa-datas-recursao lista-de-datas-1 1789) 1337)
-(check-expect (analisa-datas-recursao lista-de-datas-2 1520) 1318)
-(check-expect (analisa-datas-recursao lista-de-datas-3 1920) 1920)
-(check-expect (analisa-datas-recursao lista-de-datas-4 2007) 2006)
-             
-;;----------------------------------------------------------------------------------------------------EXERCÍCIO 04--------------------------------------------------------------------------------------------------------------------------------------------------
-
-;; árvores binárias =======================================================================================================================================================================================================================================================================================================================================
-
-(define-struct nó (id c e d))
-
-;; Um elemento árvorebinária do conjunto ÁrvoreBinária pode ser:
-
-;; 1. empty, representando a falta de informação
-
-;; ou
-
-;; 2. (make-nó id c e d), em que:
-
-;; id: Número, representa o identificador do nó
-
-;; c: String, representa o conteúdo do nó
-
-;; e: ÁrvoreBinária, representa a sub-árvore da esquerda
-
-;; d: ÁrvoreBinária, representa a sub-árvore da direita
-
-;; Exemplos de elementos do conjunto ÁrvoreBinária:
-
-;; Primeiro exemplo de árvore binária:
-(define centoedois (make-nó 102 "centoedois" empty empty))
-(define cinquentaecinco (make-nó 55 "cinquentaecinco" empty empty))
-(define centoeum (make-nó 101 "centoeum" cinquentaecinco centoedois))
-(define noventaecinco (make-nó 95 "noventaecinco" empty empty))
-(define centoesetentaesete (make-nó 177 "centoesetentaesete" empty empty))
-(define noventaeoito (make-nó 98 "noventaeoito" noventaecinco centoesetentaesete))
-(define setentaeoito (make-nó 78 "setentaeoito" empty empty))
-(define noventaesete (make-nó 97 "noventaesete" empty setentaeoito))
-(define noventaenove (make-nó 99 "noventaenove" noventaesete noventaeoito))
-(define cem (make-nó 100 "cem" noventaenove centoeum))
-
-;; Segundo exemplo de árvore binária, que também é uma árvore binária de pesquisa:
-(define vinteeum (make-nó 21 "vinteeum" empty empty))
-(define quinze (make-nó 15 "quinze" empty empty))
-(define dezenove (make-nó 19 "dezenove" quinze empty))
-(define vinte (make-nó 20 "vinte" dezenove vinteeum))
-(define quatorze (make-nó 14 "quatorze" empty empty))
-(define quatro (make-nó 4 "quatro" empty empty))
-(define onze (make-nó 11 "onze" quatro quatorze))
-(define doze (make-nó 12 "doze" empty empty))
-(define cinco (make-nó 5 "cinco" empty empty))
-(define oito (make-nó 8 "oito" cinco doze))
-(define nove (make-nó 9 "nove" oito onze))
-(define dez (make-nó 10 "dez" nove vinte))
-
-;; Terceiro exemplo de árvore binária:
-(define doisumcinco (make-nó 215 "doisumcinco" empty empty))
-(define doiszerocinco (make-nó 205 "doiszerocinco" empty empty))
-(define doissetezero (make-nó 270 "doissetezero" doiszerocinco doisumcinco))
-(define doisumzero (make-nó 210 "doisumzero" empty empty))
-(define doistrescinco (make-nó 235 "doistrescinco" empty empty))
-(define doisdoiszero (make-nó 220 "doisdoiszero" doistrescinco doisumzero))
-(define doisquatrosete (make-nó 247 "doisquatrosete" doisdoiszero empty))
-(define doisseiszero (make-nó 260 "doisseiszero" doisquatrosete doissetezero))
-(define doisquatrocinco (make-nó 245 "doisquatrocinco" empty empty))
-(define doistreszero (make-nó 230 "doistreszero" empty empty))
-(define doisquatrozero (make-nó 240 "doisquatrozero" doistreszero doisquatrocinco))
-(define doiscincozero (make-nó 250 "doiscincozero" doisquatrozero doisseiszero)) 
-
-;; É-ABP? ==========================================================================================================================================================================================================================================================================================================================================
-  
-;; é-abp?: ÁrvoreBinária -> Booleano
-
-;; Objetivo: esta função recebe uma árvore binária e verifica se a árvore
-;; em questão é uma árvore binária de pesquisa. Caso seja, a função retorna
-;; valor lógico verdadeiro, e caso não seja, retorna valor lógico falso.
-;; Caso a árvore seja vazia, a função retorna valor lógico verdadeiro.
-
-;; Exemplos: (é-abp? empty) = #true
-;;           (é-abp? noventaeoito) = #true
-;;           (é-abp? doisquatrosete) = #false
-;;           (é-abp? noventaesete) = #false
-;;           (é-abp? cem) = #false
-;;           (é-abp? doiscincozero) = #false
-;;           (é-abp? dez) = #true
-;;           (é-abp? quatorze) #true
-
-(define (é-abp? tree)
-  [cond
-    [(empty? tree) #true]
-    [(testa-vértice tree)(and (é-abp? (nó-e tree))(é-abp? (nó-d tree)))] 
-    [else #false]]) 
-
-;; Testes:
-(check-expect (é-abp? empty) #true)
-(check-expect (é-abp? noventaeoito) #true)
-(check-expect (é-abp? doisquatrosete) #false)
-(check-expect (é-abp? noventaesete) #false)
-(check-expect (é-abp? cem) #false)
-(check-expect (é-abp? doiscincozero) #false)
-(check-expect (é-abp? dez) #true) 
-(check-expect (é-abp? dezenove) #true)
-(check-expect (é-abp? quatorze) #true)
+    [(empty? list) empty-image]
+    [(pag-web? (first list)) (beside (analisa-lista-imagens page (rest list))(mostra-imagens (first list)))]
+    [(image? (first list)) (beside (above (text (pag-web-nome page) 15 "black")(first list)) (analisa-lista-imagens page (rest list)))]
+    [else (analisa-lista-imagens page (rest list))]])   
     
-;; TESTA-VÉRTICE ==========================================================================================================================================================================================================================================================================================================================================
+;; Testes:
+;;(check-expect (analisa-lista-imagens pagweb0 conteudos-vazia) empty-image)
+;;(check-expect (analisa-lista-imagens pagweb1 conteudos1) .)
+;;(check-expect (analisa-lista-imagens pagweb2 conteudos2) .)
+;;(check-expect (analisa-lista-imagens pagweb4 conteudos5) .)
 
-;; testa-vértice: ÁrvoreBinária -> Booleano
 
-;; Objetivo: esta função auxiliar recebe um nó de uma árvore binária e verifica se
-;; o id do nó à esquerda do nó recebido é menor do que o id do nó informado, e se
-;; o id do nó à direita do nó recebido é maior do que o id do nó informado. Caso
-;; isso ocorra, a função retorna valor lógico verdadeiro. Nos casos em que os nós
-;; à direita e à esquerda são empty, a função retorna valor lógico verdadeiro.
-;; Caso somente um dos dois nós à direita ou à esquerda do nó informado seja empty,
-;; a função analisa somente o nó que não é empty. Caso o próprio nó informado
-;; seja empty, a função retorna valor lógico verdadeiro.
+;;----------------------------------------------------------------------------------------------------EXERCÍCIO 04---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-;; Exemplos: (testa-vértice empty) = #true
-;;           (testa-vértice noventaeoito) = #true
-;;           (testa-vértice doisquatrosete) = #true
-;;           (testa-vértice noventaesete) = #false
-;;           (testa-vértice cem) = #true
-;;           (testa-vértice doiscincozero) = #true
-;;           (testa-vértice dez) = #true
-;;           (testa-vértice dezenove) = #true
-;;           (testa-vértice quatorze) = #true
+;; PROFUNDIDADE ====================================================================================================================================================================================================================================================================================
 
-(define (testa-vértice node)
-  [cond
-    [(empty? node) #true]
-    [(and (empty? (nó-e node))(empty? (nó-d node))) #true]
-    [(and (empty? (nó-e node))(>= (nó-id node)(nó-id (nó-d node)))) #false]
-    [(and (empty? (nó-d node))(<= (nó-id node)(nó-id (nó-e node)))) #false]
-    [(and (or (empty? (nó-e node))(> (nó-id node)(nó-id (nó-e node))))(or (empty? (nó-d node)) (< (nó-id node)(nó-id (nó-d node))))) #true]
-    [else #false]])     
+;; profundidade: Pag-web -> Número
+
+;; Objetivo: esta função recebe uma página da web, retornando
+;; a profundidade máxima da página (ou seja, o número máximo
+;; de níveis que ela contém). Assume-se que uma página web
+;; sem sub-páginas possui valor de profundidade igual a zero.
+
+;; Exemplos: (profundidade pagweb0) = 0
+;;           (profundidade pagweb4) = 1
+;;           (profundidade pagweb9) = 2
+;;           (profundidade pagweb8) = 3
+;;           (profundidade pagweb6) = 4
+
+(define (profundidade page)
+    (analisa-lista-profundidade (pag-web-conteudo page))) 
+  
+;; Testes:
+(check-expect (profundidade pagweb0) 0)
+(check-expect (profundidade pagweb4) 1)
+(check-expect (profundidade pagweb9) 2) 
+(check-expect (profundidade pagweb8) 3)
+(check-expect (profundidade pagweb6) 4)
+
+;; ANALISA-LISTA-PROFUNDIDADE ====================================================================================================================================================================================================================================================================================
+
+;; analisa-lista-profundidade: Lista-conteudo -> Número
+
+;; Objetivo: esta função auxiliar recebe uma lista de conteúdos de
+;; uma página da web, retornando a profundidade máxima da
+;; pagina da web que contém a lista fornecida. Caso a lista
+;; não contenha nenhuma página da web, a função retorna o
+;; valor zero.
+
+;; Exemplos: (analisa-lista-profundide conteudos-vazia) = 0
+;;           (analisa-lista-profundide conteudos4) = 1
+;;           (analisa-lista-profundide conteudos9) = 2
+;;           (analisa-lista-profundide conteudos8) = 3
+;;           (analisa-lista-profundide conteudos6) = 4
+
+(define (analisa-lista-profundidade lista)
+  (cond
+    [(empty? lista) 0]
+    [(or (image? (first lista))(string? (first lista))) (analisa-lista-profundidade (rest lista))]
+    [else (max (+ 1 (profundidade (first lista)))(analisa-lista-profundidade (rest lista)))])) 
 
 ;; Testes:
-(check-expect (testa-vértice empty) #true)
-(check-expect (testa-vértice noventaeoito) #true) 
-(check-expect (testa-vértice doisquatrosete) #true)
-(check-expect (testa-vértice noventaesete) #false)
-(check-expect (testa-vértice cem) #true)
-(check-expect (testa-vértice doiscincozero) #true)
-(check-expect (testa-vértice dez) #true)
-(check-expect (testa-vértice dezenove) #true)
-(check-expect (testa-vértice quatorze) #true)
+(check-expect (analisa-lista-profundidade conteudos-vazia) 0)
+(check-expect (analisa-lista-profundidade conteudos4) 1)
+(check-expect (analisa-lista-profundidade conteudos9) 2)
+(check-expect (analisa-lista-profundidade conteudos8) 3)
+(check-expect (analisa-lista-profundidade conteudos6) 4)
+
+;;----------------------------------------------------------------------------------------------------EXERCÍCIO 05---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+;; GERA-IMAGEM-PAGINA ====================================================================================================================================================================================================================================================================================
+
+;; gera-imagem-pagina: Pag-web -> Imagem
+
+;; Objetivo: esta função recebe uma página da web, retornando seu conteúdo de forma estruturada, incluindo
+;; os conteúdos de todas as sub-páginas que ela referencia, de forma sequencial. Assume-se que o conteúdo de
+;; cada página será delimitado por retângulos pretos contendo < ou >.
+
+;; Exemplos: (gera-imagem-pagina pagweb0) = .
+;;           (gera-imagem-pagina pagweb3) = .
+;;           (gera-imagem-pagina pagweb11) = .
+;;           (gera-imagem-pagina pagweb9) = .
+
+
+(define (gera-imagem-pagina page)
+  (above/align "left" (text (pag-web-nome page) 20 "black")(beside(beside retangulo-preto-menorque (analisa-paginas-imagens (pag-web-conteudo page))) retangulo-preto-maiorque))) 
+
+;; Testes:
+;;(check-expect (gera-imagem-pagina pagweb0) .)
+;;(check-expect (gera-imagem-pagina pagweb3)  .)
+;;(check-expect (gera-imagem-pagina pagweb11) .)
+;;(check-expect (gera-imagem-pagina pagweb9)  .)
+ 
+          
+
+;; ANALISA-PAGINAS-IMAGENS ====================================================================================================================================================================================================================================================================================
+
+;; analisa-paginas-imagens: Lista-conteudo -> Imagem
+
+;; Objetivo: esta função auxiliar recebe uma lista de conteúdos de uma página da web, retornando seu conteúdo de forma estruturada,
+;; e considerando todas as sub-páginas subsequentes. As sub-páginas subsequentes contidas na lista de conteúdos terão seus conteúdos
+;; delimitados por retângulos pretos contendo < ou >. Caso a função receba uma lista vazia, ela retorna uma imagem vazia.
+
+;; Exemplos: (analisa-paginas-imagens conteudos-vazia) = empty-image
+;;           (analisa-paginas-imagens conteudos3) = .
+;;           (analisa-paginas-imagens conteudos11) = .         
+;;           (analisa-paginas-imagens conteudos9) = .
+
+(define (analisa-paginas-imagens lista)
+  [cond
+    [(empty? lista) empty-image]
+    [(image? (first lista)) (beside (first lista) (analisa-paginas-imagens (rest lista)))]
+    [(string? (first lista)) (beside (text (first lista) 20 "black") (analisa-paginas-imagens (rest lista)))]
+    [(pag-web? (first lista)) (beside (gera-imagem-pagina (first lista))(analisa-paginas-imagens (rest lista)))]
+    [else (analisa-paginas-imagens (rest lista))]])    
+
+;; Testes:
+;;(check-expect (analisa-paginas-imagens conteudos-vazia) empty-image)
+;;(check-expect (analisa-paginas-imagens conteudos3) .)
+;;(check-expect (analisa-paginas-imagens conteudos11) .)
+;;(check-expect (analisa-paginas-imagens conteudos9)  .)

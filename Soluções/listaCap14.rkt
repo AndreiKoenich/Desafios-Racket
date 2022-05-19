@@ -1,6 +1,3 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname listaCap14-AndreiPochmannKoenich-B) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;;----------------------------------------------------------------------------------------------------EXERCÍCIO 01---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; Um elemento do conjunto Data é um elemento do cjto. NumerosInteiros
@@ -403,21 +400,3 @@
 (check-expect (testa-vértice dez) #true)
 (check-expect (testa-vértice dezenove) #true)
 (check-expect (testa-vértice quatorze) #true)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   

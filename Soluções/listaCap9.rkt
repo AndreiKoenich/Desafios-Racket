@@ -1,6 +1,3 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname listaCap9-AndreiPochmannKoenich-B) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #f)))
 ;;----------------------------------------------------------------------------------------------------EXERCÍCIO 01---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ;; estrutura carro ================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
@@ -218,13 +215,3 @@
 (check-expect (reduzvalor celta-ILT) (make-carro 2009 "celtaspirit" 22500 #true #true #true))
 (check-expect (reduzvalor uno-IGT) (make-carro 2005 "unomille" 18000 #false #false #false))
 (check-expect (reduzvalor fiesta-IQA) (make-carro 2012 "fiestahatch" 27000 #true #false #true))
-
-
-
-
-  
-
-  
-
-
-

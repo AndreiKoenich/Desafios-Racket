@@ -306,7 +306,7 @@
 ;; Terminação: sabe-se que o algoritmo de backtracking percorre todos os elementos da lista que corresponde ao grafo
 ;; utilizando chamadas de referência mútua com a função encontra-caminhos-vizinhos. Em razão disso, em algum momento
 ;; da recursão o grafo estará todo percorrido (lista vazia), garantindo o término da função graças às funções
-;; empty? e boolean?. No casos em que não existem caminhos possíveis de serem percorridos, o término também
+;; empty? e boolean?. Nos casos em que não existem caminhos possíveis de serem percorridos, o término também
 ;; ocorre em razão das funções empty? e boolean?.
 
 ;; Testes:
@@ -356,7 +356,7 @@
 ;; Terminação: sabe-se que o algoritmo de backtracking percorre todos os elementos da lista que corresponde ao grafo
 ;; utilizando chamadas de referência mútua com a função encontra-caminhos. Em razão disso, em algum momento
 ;; da recursão o grafo estará todo percorrido (lista vazia), garantindo o término da recursão graças às funções
-;; empty? e boolean?. No casos em que não existem caminhos possíveis de serem percorridos, o término também
+;; empty? e boolean?. Nos casos em que não existem caminhos possíveis de serem percorridos, o término também
 ;; ocorre em razão das funções empty? e boolean?.
 
 ;; Testes:
@@ -453,7 +453,7 @@
 ;; Terminação: sabe-se que o algoritmo de backtracking percorre todos os elementos da lista que corresponde ao grafo
 ;; utilizando chamadas de referência mútua com a função encontra-todas-listas-caminhos. Em razão disso, em algum momento
 ;; da recursão o grafo estará todo percorrido (lista vazia), garantindo o término da recursão graças às funções
-;; empty? e boolean?. No casos em que não existem caminhos possíveis de serem percorridos, o término também
+;; empty? e boolean?. Nos casos em que não existem caminhos possíveis de serem percorridos, o término também
 ;; ocorre em razão das funções empty? e boolean?.
 
 ;; Testes:
@@ -499,7 +499,7 @@
 ;; Terminação: sabe-se que o algoritmo de backtracking percorre todos os elementos da lista que corresponde ao grafo
 ;; utilizando chamadas de referência mútua com a função encontra-todos-caminhos-visitadas. Em razão disso, em algum momento
 ;; da recursão o grafo estará todo percorrido (lista vazia), garantindo o término da recursão graças às funções
-;; empty? e boolean?. No casos em que não existem caminhos possíveis de serem percorridos, o término também
+;; empty? e boolean?. Nos casos em que não existem caminhos possíveis de serem percorridos, o término também
 ;; ocorre em razão das funções empty? e boolean?.
 
 ;; Testes:

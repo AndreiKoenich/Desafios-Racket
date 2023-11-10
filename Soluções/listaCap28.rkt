@@ -91,7 +91,7 @@
 ;; Objetivo: esta função recebe uma string e uma lista de strings, e verifica se
 ;; a string fornecida está presente na lista de strings. Caso esteja, a função
 ;; retorna valor lógico verdadeiro. Caso não esteja, a função retorna valor
-;; lógico falso. Caso a função receae uma lista vazia, a função retorna valor
+;; lógico falso. Caso a função receba uma lista vazia, a função retorna valor
 ;; lógico falso.
 
 ;; Exemplos: (está-na-lista? "Morphy" lista-strings-vazia) = #false

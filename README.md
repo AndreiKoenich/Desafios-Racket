@@ -5,4 +5,4 @@ Todas as tarefas foram integralmente concluídas.
 
 O ambiente de execução utilizado durante a realização das tarefas foi o DrRacket
 
-htps://racket-lang.org/download/
+https://racket-lang.org/download/
